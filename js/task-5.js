@@ -24,19 +24,25 @@ class Car{
         this.speed = 0;
   }
     accelerate(value) {
-        if (value < this.maxSpeed) {
-            this.speed += value;
+        const newSpeed = this.speed + value;
+        if (newSpeed >= this.maxSpeed) {
+            this.speed = this.maxSpeed;
+        } else {
+            this.speed = newSpeed;
         }
   }
     decelerate(value) {
-        if (value > 0) {
-         this.speed -= value;
-      }
+        const newSpeed = this.speed - value;
+        if (newSpeed < 0) {
+            this.speed = 0;
+        } else {
+            this.speed = newSpeed;
+        }
   }
 
     drive(hours) {
         if (this.isOn) {
-            this.distance =this.distance + hours * this.speed;
+            this.distance += hours * this.speed;
         }
     }
     
